@@ -3,93 +3,15 @@
 <head>
 </head>
 <body>
-<script>
-
-    function computerPlay() {
-        let computerChoice = Math.round(Math.random() * 3);
-
-        if (computerChoice == 1) {
-            return "rock";
-        }
-
-        else if (computerChoice == 2) {
-            return "paper";
-        }
-
-        else {
-            return "scissors";
-        }
-    }
-
-    function playRound(playerSelection, computerSelection) {
-        let playerChoice = playerSelection.toLowerCase();
-        let computerChoice = computerSelection.toLowerCase();
-
-        if(playerChoice === computerChoice) {
-            return "tie game";
-        }
-        
-        switch(playerChoice) {
-            case "rock":
-                if(computerChoice === "paper") {
-                    return "you lose, paper beats rock";
-                }
-                else {
-                    return "you win, rock beats scissors";
-                }
-            break;
-
-            case "paper":
-                if(computerChoice === "scissors") {
-                    return "you lose, scissors beats paper";
-                }
-                else {
-                    return "you win, paper beats rock";
-                }
-            break;
-
-            case "scissors":
-                if(computerChoice === "rock") {
-                    return "you lose, rock beats scissors";
-                }
-                else {
-                    return "you win, scissors beats paper";
-                }
-            break;
-        }
-    }
-
-    function game(rounds) {
-        let playerScore = 0;
-        let compScore = 0;
-
-        for(let i = 1; i <= rounds; i++) {
-            playerSelection = window.prompt("choose your element: ");
-            computerSelection = computerPlay();
-            let results = playRound(playerSelection, computerSelection);
-            console.log(results);
-
-            if(results.slice(0, 7) === "you win") {
-                playerScore++;
-            }
-            if(results.slice(0, 8) === "you lose") {
-                compScore++;
-            } 
-        }
-
-        if(playerScore === compScore) {
-            return "final result: tie game";
-        }
-        else if(playerScore > compScore) {
-            return "final result: player wins";
-        }
-        else {
-            return "final result: computer wins";
-        }
-    }
-
-    console.log(game(5));
-
-</script>
+    <div id="player-choice">
+        <button id="rock">rock</button>
+        <button id="paper">paper</button>
+        <button id="scissors">scissors</button>
+    </div>
+    <div id="score">
+        player: 0 computer: 0
+    </div>
+    <div id="results"></div>
+<script src="index.js"></script>
 </body>
 </html>
